@@ -1,1 +1,1 @@
-[{"date": "2015-01-01T08:41:19Z", "dist":1999},{"date": "2015-01-02T08:41:19Z", "dist":3999},{"date":"2015-01-03T08:41:19Z", "dist":5999},{"date":"2015-01-04T08:41:19Z", "dist":7999},{"date":"2015-01-05T08:41:19Z", "dist":10000.5}]
+[{"start_date_local": "2015-01-01T08:41:19Z", "distance":1999},{"start_date_local": "2015-01-02T08:41:19Z", "distance":3999},{"start_date_local":"2015-01-03T08:41:19Z", "distance":5999},{"start_date_local":"2015-01-04T08:41:19Z", "distance":7999},{"start_date_local":"2015-01-05T08:41:19Z", "distance":10000.5}]

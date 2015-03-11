@@ -20,7 +20,7 @@ var day = d3.time.format("%w"),
 var parseDate = d3.time.format("%Y-%m-%dT%H:%M:%SZ").parse;
 
 var color = d3.scale.quantize()
-    .domain([0, 10])
+    .domain([0, 30])
     .range(d3.range(5).map(function(d) { return "q" + d + "-5"; }));
 
 var svg = d3.select("#activity-calendar").selectAll("svg")
@@ -57,14 +57,14 @@ svg.selectAll(".month")
     .attr("d", monthPath);
 
 
-var url = "simple.json";
-//var url = "100.json";
+//var url = "simple.json";
+var url = "200.json";
 d3.json(url, function(error, json) {
   if (error) return console.warn(error);
 
   var data = d3.nest()
-    .key(function (d) {return format(parseDate(d.date));})
-    .rollup(function (d) {return +d[0].dist/1000;})
+    .key(function (d) {return format(parseDate(d.start_date_local));})
+    .rollup(function (d) {return +d[0].distance/1000;})
     .map(json);
 
   rect.filter(function (d) {return d in data;})
