@@ -83,7 +83,6 @@ d3.json(url, function(error, json) {
   if (error) return console.warn(error);
 
   // Map the json data to date & distance
-  // TODO: cater for days where I run more than once.
   var data = d3.nest()
     .key(function (d) {return format(parseDate(d.start_date_local));})
     .rollup(function (d) {var dist = 0;
