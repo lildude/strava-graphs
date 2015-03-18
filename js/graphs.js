@@ -86,7 +86,12 @@ d3.json(url, function(error, json) {
   // TODO: cater for days where I run more than once.
   var data = d3.nest()
     .key(function (d) {return format(parseDate(d.start_date_local));})
-    .rollup(function (d) {return +d[0].distance/1000;})
+    .rollup(function (d) {var dist = 0;
+        d.forEach(function(e) {
+            dist += +e.distance;
+        })
+        return +dist/1000;
+      })
     .map(json);
 
   // Each Day tooltip & colouring
