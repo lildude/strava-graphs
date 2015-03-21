@@ -1,5 +1,5 @@
 body {
-  font: 10px sans-serif;
+  font: 12px sans-serif;
   shape-rendering: crispEdges;
 }
 
@@ -10,9 +10,9 @@ body {
 }
 
 .month {
-  fill: none;
-  stroke: #000;
-  stroke-width: 1px;
+  fill: #999;
+  stroke: #999;
+  stroke-width: 0px;
 }
 
 .RdYlGn .q0-5{fill:#dae289}
