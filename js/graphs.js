@@ -90,8 +90,8 @@ function xOffset(d) {
   }
 }
 
-//var url = "simple.json";
-var url = "200.json";
+// Run `bin/get-entries.sh access_token` to populate this (because d3 doesn't do jsonp yet)
+var url = "data/year-o-entries.json";
 d3.json(url, function(error, json) {
   if (error) return console.warn(error);
 
