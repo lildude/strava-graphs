@@ -15,8 +15,24 @@ body {
   stroke-width: 0px;
 }
 
-.RdYlGn .q0-5{fill:#dae289}
-.RdYlGn .q1-5{fill:#9cc069}
-.RdYlGn .q2-5{fill:#669d45}
-.RdYlGn .q3-5{fill:#637939}
-.RdYlGn .q4-5{fill:#3b6427}
+/* Green running blocks */
+.RdYlGn .Rq0-5{fill:#dae289}
+.RdYlGn .Rq1-5{fill:#9cc069}
+.RdYlGn .Rq2-5{fill:#669d45}
+.RdYlGn .Rq3-5{fill:#637939}
+.RdYlGn .Rq4-5{fill:#3b6427}
+
+/* Blue swimming blocks */
+.RdYlGn .Sq0-5{fill:#A1B6EE}
+.RdYlGn .Sq1-5{fill:#5976CB}
+.RdYlGn .Sq2-5{fill:#2D4DAD}
+.RdYlGn .Sq3-5{fill:#132E7E}
+.RdYlGn .Sq4-5{fill:#041138}
+
+
+/* Red cycling blocks */
+.RdYlGn .Cq0-5{fill:#FFCDCD}
+.RdYlGn .Cq1-5{fill:#FF8A8A}
+.RdYlGn .Cq2-5{fill:#D34747}
+.RdYlGn .Cq3-5{fill:#A71C1C}
+.RdYlGn .Cq4-5{fill:#690000}

@@ -15,6 +15,7 @@ var day = function(d) { return (d.getDay() + 6) % 7; },
     format = d3.time.format("%Y-%m-%d"),
     parseDate = d3.time.format("%Y-%m-%dT%H:%M:%SZ").parse;
 
+
 var color = d3.scale.quantize()
     .domain([0, 30])  // TODO: Make this dynamic and dependent on my longest run in the dataset
     .range(d3.range(5).map(function(d) { return "q" + d + "-5"; }));
@@ -90,6 +91,7 @@ function xOffset(d) {
   }
 }
 
+
 // Run `bin/get-entries.sh access_token` to populate this (because d3 doesn't do jsonp yet)
 var url = "data/year-o-entries.json";
 d3.json(url, function(error, json) {
@@ -97,18 +99,19 @@ d3.json(url, function(error, json) {
 
   // Map the json data to date & distance
   var data = d3.nest()
-    .key(function (d) {return format(parseDate(d.start_date_local));})
-    .rollup(function (d) {var dist = 0;
+    .key(function (d) { return format(parseDate(d.start_date_local)); })
+    .rollup(function (d) { var dist = 0; var type = "";
         d.forEach(function(e) {
             dist += +e.distance;
+            type = e.type;
         })
-        return +dist/1000;
+        return {"dist": +dist/1000, "type": type};
       })
     .map(json);
-
+console.log(data);
   // Each Day tooltip & colouring
   rect.filter(function (d) {return d in data;})
-    .attr("class", function (d) {return "day " + color(data[d]);})
+    .attr("class", function (d) {return "day " + data[d].type[0] + color(data[d].dist);})
     .select("title")
-    .text(function (d) {return d + ": " + Math.round(data[d]) + "km";});
+    .text(function (d) {return d + ": " + data[d].dist.toFixed(2) + "km " + data[d].type;});
 })
