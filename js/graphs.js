@@ -17,7 +17,7 @@ var day = function(d) { return (d.getDay() + 6) % 7; },
 
 
 var color = d3.scale.quantize()
-    .domain([0, 30])  // TODO: Make this dynamic and dependent on my longest run in the dataset
+    .domain([0, 30])  // TODO: Make this dynamic and dependent on my longest run in the dataset. http://www.jeromecukier.net/blog/2011/08/11/d3-scales-and-color/
     .range(d3.range(5).map(function(d) { return "q" + d + "-5"; }));
 
 var svg = d3.select("#activity-calendar").selectAll("svg")
@@ -100,18 +100,18 @@ d3.json(url, function(error, json) {
   // Map the json data to date & distance
   var data = d3.nest()
     .key(function (d) { return format(parseDate(d.start_date_local)); })
-    .rollup(function (d) { var dist = 0; var type = "";
+    .rollup(function (d) { var dist = 0; var act_type = "";
         d.forEach(function(e) {
             dist += +e.distance;
-            type = e.type;
+            act_type = e.type;
         })
-        return {"dist": +dist/1000, "type": type};
+        return {"dist": +dist/1000, "act_type": act_type};
       })
     .map(json);
 console.log(data);
   // Each Day tooltip & colouring
   rect.filter(function (d) {return d in data;})
-    .attr("class", function (d) {return "day " + data[d].type[0] + color(data[d].dist);})
+    .attr("class", function (d) { return "day " + data[d].act_type[0] + color(data[d].dist);})
     .select("title")
-    .text(function (d) {return d + ": " + data[d].dist.toFixed(2) + "km " + data[d].type;});
+    .text(function (d) {return d + ": " + data[d].dist.toFixed(2) + "km " + data[d].act_type;});
 })
